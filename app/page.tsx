@@ -16,8 +16,12 @@ const WHATSAPP_NUMBER = "5493515511072";
 
 export default function Home() {
   const handleWhatsAppClick = () => {
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "Contact");
+    try {
+      if (typeof window !== "undefined" && typeof window.fbq === "function") {
+        window.fbq("track", "Contact");
+      }
+    } catch (error) {
+      console.warn("Meta Pixel error:", error);
     }
   };
 
