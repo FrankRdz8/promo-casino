@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 // 👇 Acá va tu número de WhatsApp (código de país + número, sin + ni espacios)
-const WHATSAPP_NUMBER = "5491112345678";
+const WHATSAPP_NUMBER = "5493515511072";
 
 export default function Home() {
   return (
