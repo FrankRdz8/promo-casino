@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { ArrowRight } from "lucide-react";
+
+// 👇 Acá va tu número de WhatsApp (código de país + número, sin + ni espacios)
+const WHATSAPP_NUMBER = "5493515511072";
 
 const benefits = [
   { icon: "⚙️", label: "PANEL CON MODIFICADOR DE RTP", gold: true },
@@ -78,7 +80,7 @@ export default function Home() {
       <span className="pointer-events-none fixed bottom-[5%] left-[45%] z-[1] animate-[float-up_7s_linear_infinite_4.5s] text-3xl" style={{ filter: "drop-shadow(0 0 10px rgba(245,181,46,.7))" }}>🪙</span>
 
       {/* Header / Marca */}
-      <header className="relative z-[2] px-5 pt-7 text-center">
+      <header className="relative z-[2] px-5 pt-4 text-center">
         <div className="flex items-center justify-center gap-3.5">
           <span className="animate-[bob_3s_ease-in-out_infinite] text-3xl" style={{ filter: "drop-shadow(0 0 10px #f5b52e)" }}>👑</span>
           <div className="leading-[.95]">
@@ -89,18 +91,18 @@ export default function Home() {
       </header>
 
       {/* Contenido principal */}
-      <main className="relative z-[2] mx-auto max-w-3xl px-5 pb-16 pt-3.5 text-center">
-        <h1 className="mt-4 leading-[1.02]">
-          <span className="anton txt-white-grad h1-shadow-w block -skew-x-2 text-[clamp(52px,11vw,104px)]">F1CHAS</span>
-          <span className="anton txt-gold h1-shadow-g block -skew-x-2 text-[clamp(46px,9.5vw,88px)]">POR MAYOR</span>
-          <span className="anton txt-white-grad h1-shadow-w block -skew-x-2 text-[clamp(40px,8.5vw,78px)]">PARA CAJEROS</span>
+      <main className="relative z-[2] mx-auto max-w-3xl px-5 pb-10 pt-2 text-center">
+        <h1 className="mt-2 leading-[1.0]">
+          <span className="anton txt-white-grad h1-shadow-w block -skew-x-2 text-[clamp(42px,9vw,84px)]">F1CHAS</span>
+          <span className="anton txt-gold h1-shadow-g block -skew-x-2 text-[clamp(36px,7.5vw,72px)]">POR MAYOR</span>
+          <span className="anton txt-white-grad h1-shadow-w block -skew-x-2 text-[clamp(32px,7vw,64px)]">PARA CAJEROS</span>
         </h1>
 
         {/* Beneficios */}
-        <div className="my-9 flex flex-col items-center gap-3.5">
+        <div className="mx-auto my-5 flex w-fit flex-col items-center gap-1 sm:my-4 sm:grid sm:w-fit sm:grid-cols-2 sm:gap-x-2 sm:gap-y-1">
           {benefits.map((b) => (
             <div key={b.label}
-              className={`flex items-center gap-3.5 whitespace-nowrap rounded-full py-3 pl-3 pr-7 text-[clamp(13px,2.6vw,17px)] font-extrabold uppercase tracking-[.04em] transition-transform duration-300 hover:-translate-y-[3px] hover:scale-[1.02] ${b.gold
+              className={`flex items-center gap-1.5 whitespace-nowrap rounded-full py-1.5 pl-1.5 pr-2.5 text-[clamp(10px,2vw,13px)] font-extrabold uppercase tracking-[.03em] transition-transform duration-300 hover:-translate-y-[3px] hover:scale-[1.02] ${b.gold
                 ? "border-2 border-[rgba(245,181,46,.6)] hover:shadow-[0_0_34px_rgba(245,181,46,.55)]"
                 : "border-2 border-[rgba(200,120,255,.55)] hover:shadow-[0_0_34px_rgba(200,120,255,.55)]"
                 }`}
@@ -110,21 +112,21 @@ export default function Home() {
                   ? "0 0 22px rgba(245,181,46,.3), inset 0 0 18px rgba(245,181,46,.12)"
                   : "0 0 22px rgba(168,85,247,.35), inset 0 0 18px rgba(168,85,247,.15)",
               }}>
-              <span className="grid h-10 w-10 min-w-10 place-items-center rounded-full text-lg"
+              <span className="grid h-7 w-7 min-w-7 shrink-0 place-items-center rounded-full text-sm"
                 style={{
                   background: b.gold ? "linear-gradient(145deg,#ffd76a,#c77f0a)" : "linear-gradient(145deg,#c084fc,#7b2ff7)",
                   boxShadow: b.gold ? "0 0 14px rgba(245,181,46,.7)" : "0 0 14px rgba(192,132,252,.7)",
                 }}>
                 {b.icon}
               </span>
-              {b.label}
+              <span className="flex-1 text-center">{b.label}</span>
             </div>
           ))}
         </div>
 
         {/* Botón WhatsApp */}
-        <a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer"
-          className="mt-1.5 inline-flex items-center gap-4 rounded-full px-8 py-4 no-underline transition-transform duration-300 hover:scale-105"
+        <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
+          className="mt-1 inline-flex items-center gap-3 rounded-full px-6 py-3 no-underline transition-transform duration-300 hover:scale-105"
           style={{
             background: "linear-gradient(145deg,#25d366,#128c4b)",
             border: "3px solid #7CFC9B",
@@ -136,7 +138,7 @@ export default function Home() {
             <small className="block text-[clamp(11px,2.2vw,14px)] font-bold tracking-[.03em] text-[#eafff2]">
               MÁS INFO ESCRIBINOS AL
             </small>
-            <strong className="anton block bg-gradient-to-b from-white to-[#d8ffe8] bg-clip-text text-[clamp(24px,5vw,36px)] tracking-[.05em] text-transparent"
+            <strong className="anton block bg-gradient-to-b from-white to-[#d8ffe8] bg-clip-text text-[clamp(20px,4vw,28px)] tracking-[.05em] text-transparent"
               style={{ filter: "drop-shadow(0 2px 0 #064e2b)" }}>
               WHATSAPP
             </strong>
