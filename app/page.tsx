@@ -2,10 +2,25 @@
 
 import Image from "next/image";
 
-// 👇 Acá va tu número de WhatsApp (código de país + número, sin + ni espacios)
+declare global {
+  interface Window {
+    fbq?: (
+      command: string,
+      eventName: string,
+      parameters?: Record<string, unknown>
+    ) => void;
+  }
+}
+
 const WHATSAPP_NUMBER = "5493515511072";
 
 export default function Home() {
+  const handleWhatsAppClick = () => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "Contact");
+    }
+  };
+
   return (
     <main
       className="flex h-[100dvh] w-full items-center justify-center overflow-hidden"
@@ -18,11 +33,6 @@ export default function Home() {
           "linear-gradient(180deg, #150328 0%, #12031f 50%, #0d0218 100%)",
       }}
     >
-      {/*
-        Contenedor con la relación de aspecto exacta de la imagen (900x1600).
-        Así el botón siempre queda alineado sobre el botón verde de la imagen,
-        en cualquier pantalla (mobile o desktop), sin cortes.
-      */}
       <div
         className="relative max-h-full max-w-full"
         style={{ aspectRatio: "9 / 16", height: "100dvh" }}
@@ -38,16 +48,12 @@ export default function Home() {
           draggable={false}
         />
 
-        {/*
-          Botón interactivo transparente posicionado exactamente sobre
-          el botón verde de WhatsApp de la imagen.
-          Ajustá los valores si tu imagen final difiere.
-        */}
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Escribinos por WhatsApp"
+          onClick={handleWhatsAppClick}
           className="absolute z-10 rounded-full transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
           style={{
             left: "3.5%",
