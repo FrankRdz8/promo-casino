@@ -48,7 +48,7 @@ export default function RootLayout({
               'https://connect.facebook.net/en_US/fbevents.js');
 
               fbq('init', '${META_PIXEL_ID}');
-              fbq('track', 'PageView');
+              fbq('track', 'PageView'); // <-- Registra la visita a la página
             `,
           }}
         />
